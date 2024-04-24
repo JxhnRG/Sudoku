@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 
 import java.io.IOException;
@@ -45,7 +46,28 @@ public class GameController {
                 sudokuBoard.add(textField, col, row);
             }
         }
+        for (TextField textField : textFields) {
+            textField.setOnKeyReleased(event -> handleTextFieldInput(textField, event));
+        }
     }
+
+    private void handleTextFieldInput(TextField textField, KeyEvent event) {
+        String input = textField.getText();
+        if (!input.matches("[1-9]?")) {
+            // Si la entrada no es un número del 1 al 9, eliminar el último carácter ingresado
+            textField.setText(input.substring(0, input.length() - 1));
+            showAlert("Error", "Ingrese un número válido (1-9).");
+            return;
+        }
+        // Actualizar la lista sudokuValues con el nuevo valor ingresado
+        updateSudokuValues();
+        // Verificar si el sudoku está resuelto después de la actualización
+        boolean isSolved = isSudokuSolved();
+        if (isSolved) {
+            showAlert("¡Felicidades!", "El Sudoku está resuelto correctamente.");
+        }
+    }
+
     public boolean isSudokuSolved() {
 
         if (sudokuValues == null) {
@@ -122,5 +144,4 @@ public class GameController {
         alert.setContentText(message);
         alert.showAndWait();
     }
-
 }

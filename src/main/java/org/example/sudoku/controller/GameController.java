@@ -1,13 +1,11 @@
 package org.example.sudoku.controller;
 
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.Border;
 import javafx.scene.layout.GridPane;
-import javafx.scene.shape.Line;
-import javafx.scene.shape.Rectangle;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -36,10 +34,41 @@ public class GameController {
                 textField.setPrefWidth(30); // Ancho preferido del TextField
                 textField.setPrefHeight(30); // Alto preferido del TextField
                 textField.setStyle("-fx-background-color: transparent; -fx-border-width: 0;");
+                textField.setAlignment(Pos.CENTER);
                 textFields.add(textField); // Agrega el TextField al ArrayList
                 // Añade el TextField a la cuadrícula en la posición (col, row)
                 sudokuBoard.add(textField, col, row);
 
+                insertNumberTextField(1,6);
+                insertNumberTextField(3,1);
+                insertNumberTextField(5,4);
+                insertNumberTextField(7,5);
+                insertNumberTextField(11,8);
+                insertNumberTextField(12,3);
+                insertNumberTextField(14,5);
+                insertNumberTextField(15,6);
+                insertNumberTextField(18,2);
+                insertNumberTextField(26,1);
+                insertNumberTextField(27,8);
+                insertNumberTextField(30,4);
+                insertNumberTextField(32,7);
+                insertNumberTextField(35,6);
+                insertNumberTextField(38,6);
+                insertNumberTextField(42,3);
+                insertNumberTextField(45,7);
+                insertNumberTextField(48,9);
+                insertNumberTextField(50,1);
+                insertNumberTextField(53,4);
+                insertNumberTextField(54,5);
+                insertNumberTextField(62,2);
+                insertNumberTextField(65,7);
+                insertNumberTextField(66,2);
+                insertNumberTextField(68,6);
+                insertNumberTextField(69,9);
+                insertNumberTextField(73,4);
+                insertNumberTextField(75,5);
+                insertNumberTextField(77,8);
+                insertNumberTextField(79,7);
             }
         }
         for (TextField textField : textFields) {
@@ -141,5 +170,13 @@ public class GameController {
         alert.setContentText(message);
         alert.showAndWait();
     }
-
+    public void insertNumberTextField(int indice, int numero) {
+        // Verificar si el índice está dentro de los límites del ArrayList
+        if (indice >= 0 && indice < textFields.size()) {
+            TextField textField = textFields.get(indice);
+            // Establecer el texto del TextField con el número
+            textField.setText(String.valueOf(numero));
+            textField.setDisable(true);
+        }
+    }
 }

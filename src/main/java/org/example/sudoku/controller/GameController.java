@@ -80,7 +80,7 @@ public class GameController {
 
     private void handleTextFieldInput(TextField textField, KeyEvent event) {
         String input = textField.getText();
-        if (!input.matches("[1-9]?")) {
+        if (!input.matches("[1-9]?")|| input.length()>1) {
             // Si la entrada no es un número del 1 al 9, eliminar el último carácter ingresado
             textField.setText(input.substring(0, input.length() - 1));
             showAlert("Error", "Ingrese un número válido (1-9).");

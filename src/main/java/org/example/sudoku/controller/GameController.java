@@ -2,14 +2,13 @@ package org.example.sudoku.controller;
 
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
-import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
-
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
+import org.example.sudoku.view.alert.AlertBox;
 
 
 public class GameController {
@@ -83,14 +82,20 @@ public class GameController {
         if (!input.matches("[1-9]?")|| input.length()>1) {
             // Si la entrada no es un número del 1 al 9, eliminar el último carácter ingresado
             textField.setText(input.substring(0, input.length() - 1));
-            showAlert("Error", "Ingrese un número válido (1-9).");
+            String title = "Error";
+            String header = "Entrada inválida";
+            String content = "Ingrese un número válido (1-9).";
+            new AlertBox().showMessage(title,header,content);
         }
         // Actualizar la lista sudokuValues con el nuevo valor ingresado
         updateSudokuValues();
         // Verificar si el sudoku está resuelto después de la actualización
         boolean isSolved = isSudokuSolved();
         if (isSolved) {
-            showAlert("¡Felicidades!", "El Sudoku está resuelto correctamente.");
+            String title = "¡Felicidades!";
+            String header = null;
+            String content = "¡Has completado el Sudoku con éxito!";
+            new AlertBox().showMessage(title, null, content);
         }
     }
 
@@ -158,17 +163,10 @@ public class GameController {
         updateSudokuValues();
         boolean isSolved = isSudokuSolved();
         if (isSolved) {
-            showAlert("¡Felicidades!", "El Sudoku está resuelto correctamente.");
+            new AlertBox().showMessage("¡Felicidades!", "El Sudoku está resuelto correctamente.", null);
         } else {
-            showAlert("Error", "El Sudoku no está resuelto correctamente.");
+            new AlertBox().showMessage("Error", "El Sudoku no está resuelto correctamente." , null);
         }
-    }
-    private void showAlert(String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
     }
     public void insertNumberTextField(int indice, int numero) {
         // Verificar si el índice está dentro de los límites del ArrayList

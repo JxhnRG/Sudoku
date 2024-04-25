@@ -1,14 +1,14 @@
 package org.example.sudoku.controller;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Border;
 import javafx.scene.layout.GridPane;
+import javafx.scene.shape.Line;
+import javafx.scene.shape.Rectangle;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
@@ -18,14 +18,8 @@ public class GameController {
     @FXML
     private GridPane sudokuBoard;
     private ArrayList<TextField> textFields;
-    private ArrayList<TextField> cells;
     private ArrayList<Integer> sudokuValues;
 
-    @FXML
-    private Button buttonVerification;
-    public GameController(ArrayList<TextField> cells) {
-        this.cells = cells;
-    }
     public GameController() {
         textFields = new ArrayList<>();
     }
@@ -41,15 +35,19 @@ public class GameController {
                 TextField textField = new TextField();
                 textField.setPrefWidth(30); // Ancho preferido del TextField
                 textField.setPrefHeight(30); // Alto preferido del TextField
+                textField.setStyle("-fx-background-color: transparent; -fx-border-width: 0;");
                 textFields.add(textField); // Agrega el TextField al ArrayList
                 // Añade el TextField a la cuadrícula en la posición (col, row)
                 sudokuBoard.add(textField, col, row);
+
             }
         }
         for (TextField textField : textFields) {
             textField.setOnKeyReleased(event -> handleTextFieldInput(textField, event));
         }
+
     }
+
 
     private void handleTextFieldInput(TextField textField, KeyEvent event) {
         String input = textField.getText();
@@ -57,7 +55,6 @@ public class GameController {
             // Si la entrada no es un número del 1 al 9, eliminar el último carácter ingresado
             textField.setText(input.substring(0, input.length() - 1));
             showAlert("Error", "Ingrese un número válido (1-9).");
-            return;
         }
         // Actualizar la lista sudokuValues con el nuevo valor ingresado
         updateSudokuValues();
@@ -144,4 +141,5 @@ public class GameController {
         alert.setContentText(message);
         alert.showAndWait();
     }
+
 }

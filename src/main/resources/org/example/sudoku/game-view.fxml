@@ -45,7 +45,12 @@
             <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #5b6ee1; -fx-border-width: 3;" GridPane.columnIndex="6" GridPane.columnSpan="3" GridPane.rowIndex="6" GridPane.rowSpan="3" />
          </children>
       </GridPane>
-      <Button fx:id="buttonVerification" layoutX="278.0" layoutY="411.0" mnemonicParsing="false" onAction="#onHandleButtonVerification" text="Comprobar" />
+      <Button fx:id="buttonVerification" layoutX="248.0" layoutY="409.0" mnemonicParsing="false" onAction="#onHandleButtonVerification" style="-fx-background-color: #cce7ff;">
+         <graphic>
+            <ImageView fitHeight="27.0" fitWidth="117.0" pickOnBounds="true" preserveRatio="true">
+                <Image url="@image/comprobar.png" />
+            </ImageView>
+         </graphic></Button>
       <ImageView fitHeight="41.0" fitWidth="200.0" layoutX="224.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@image/sudokutext.png" />

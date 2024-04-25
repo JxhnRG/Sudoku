@@ -3,6 +3,7 @@ package org.example.sudoku.view;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -20,6 +21,8 @@ public class GameStage extends Stage {
         setScene(scene);
         //Insertamos un titulo al Stage
         setTitle("Sudoku");
+        //Insertamos icono de la pestaña
+        getIcons().add(new Image(String.valueOf(getClass().getResource("/org/example/sudoku/image/favicon.png"))));
         //Hacemos que el Stage no se pueda redimensionar
         setResizable(false);
         //Hacemos el show al stage

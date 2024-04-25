@@ -43,11 +43,13 @@ public class GameController {
                 insertNumberTextField(3,1);
                 insertNumberTextField(5,4);
                 insertNumberTextField(7,5);
+                insertNumberTextField(9,1);
                 insertNumberTextField(11,8);
                 insertNumberTextField(12,3);
                 insertNumberTextField(14,5);
                 insertNumberTextField(15,6);
                 insertNumberTextField(18,2);
+                insertNumberTextField(25,3);
                 insertNumberTextField(26,1);
                 insertNumberTextField(27,8);
                 insertNumberTextField(30,4);
@@ -56,10 +58,14 @@ public class GameController {
                 insertNumberTextField(38,6);
                 insertNumberTextField(42,3);
                 insertNumberTextField(45,7);
+                insertNumberTextField(46,3);
                 insertNumberTextField(48,9);
                 insertNumberTextField(50,1);
+                insertNumberTextField(52,2);
                 insertNumberTextField(53,4);
                 insertNumberTextField(54,5);
+                insertNumberTextField(56,9);
+                insertNumberTextField(60,4);
                 insertNumberTextField(62,2);
                 insertNumberTextField(65,7);
                 insertNumberTextField(66,2);
@@ -69,6 +75,7 @@ public class GameController {
                 insertNumberTextField(75,5);
                 insertNumberTextField(77,8);
                 insertNumberTextField(79,7);
+
             }
         }
         for (TextField textField : textFields) {
